@@ -1,0 +1,32 @@
+﻿<Window x:Class="EFInterview.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EFInterview"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <GroupBox Grid.Row="1" Grid.Column="1" Header="Customers" Margin="8" Height="250">
+            <DataGrid AutoGenerateColumns="False" Margin="10" Name="dgCustomers" ItemsSource="{Binding Customers, Mode=TwoWay}" MinHeight="130"
+                      HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" CanUserAddRows="False" EnableRowVirtualization="True" 
+                    EnableColumnVirtualization="True"
+                       VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                    VirtualizingStackPanel.VirtualizationMode="Standard"
+                    VirtualizingStackPanel.IsVirtualizing="True" RowEditEnding="dgCustomers_RowEditEnding">
+                <!--<DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <EventSetter Event="Selected" Handler="dgTables_DataGridRow_Selected"/>
+                    </Style>
+                </DataGrid.RowStyle>-->
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="dgcCustomerId" Binding="{Binding Path=CustomerNumber}" Header="Id" Width="0.4*" IsReadOnly="True"/>
+                    <DataGridTextColumn x:Name="dgcCustomerName" Binding="{Binding Path=CustomerName}" Header="Name" Width="*" />
+                    <DataGridTextColumn x:Name="dgcContactLastName" Binding="{Binding Path=ContactLastName}" Header="ContactLastName"/>
+                    <DataGridTextColumn x:Name="dgcContactFirstName" Binding="{Binding Path=ContactFirstName}" Header="ContactFirstName" Width="0.4*" IsReadOnly="True"/>
+                    <DataGridTextColumn x:Name="dgcPhone" Binding="{Binding Path=Phone, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"  Header="Phone" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+    </Grid>
+</Window>
